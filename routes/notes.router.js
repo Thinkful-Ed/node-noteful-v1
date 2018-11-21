@@ -80,6 +80,7 @@ router.post('/notes', (req, res, next) => {
     return next(err);
   }
 
+<<<<<<< HEAD
   notes.create(newItem)
     .then(item => {
       if (item) {
@@ -87,6 +88,18 @@ router.post('/notes', (req, res, next) => {
       }
     })
     .catch(err => next(err));
+=======
+  notes.create(newItem, (err, item) => {
+    if (err) {
+      return next(err);
+    }
+    if (item) {
+      res.location(`http://${req.headers.host}/api/notes/${item.id}`).status(201).json(item);
+    } else {
+      next();
+    }
+  });
+>>>>>>> 1d483f2... fix: location path
 });
 
 // Delete an item
