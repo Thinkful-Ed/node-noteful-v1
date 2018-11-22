@@ -128,7 +128,7 @@ describe('Noteful App', function () {
 
     it('should respond with a 404 for an invalid id', function () {
       return chai.request(server)
-        .get('/api/notes/9999')
+        .get('/api/notes/DOESNOTEXIST')
         .catch(err => err.response)
         .then(res => {
           expect(res).to.have.status(404);
@@ -206,7 +206,7 @@ describe('Noteful App', function () {
         'content': 'woof woof'
       };
       return chai.request(server)
-        .put('/api/notes/9999')
+        .put('/api/notes/DOESNOTEXIST')
         .send(updateItem)
         .catch(err => err.response)
         .then(res => {
@@ -219,7 +219,7 @@ describe('Noteful App', function () {
         'foo': 'bar'
       };
       return chai.request(server)
-        .put('/api/notes/9999')
+        .put('/api/notes/1005')
         .send(updateItem)
         .catch(err => err.response)
         .then(res => {
