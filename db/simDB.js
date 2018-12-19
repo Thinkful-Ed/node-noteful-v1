@@ -35,9 +35,9 @@ const simDB = {
         const queryKeys = Object.keys(query);
         let list = this.data;
         if (queryKeys.length > 0) {
-          list = this.data.filter(item => Object.keys(query).every(key => item[key].includes(query[key])));
+          list = this.data.filter(item => queryKeys.every(key => item[key].includes(query[key])));
         }
-        
+
         callback(null, list);
       } catch (err) {
         callback(err);
